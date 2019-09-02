@@ -233,7 +233,7 @@ POWER_COLORS = {
 def render_screen(board, height=24, width=80, points=0, newpoints=0, id='', quit=False, firstFrame=False):
 	block_length = 7
 	gamestr = "\x1b\x5b\x48\x1b\x5b\x4a"
-	gamestr += ""+" "*(7*3) + str(points) + (f"  {c.BOLD}{c.FG_LIGHT_GREEN}(+ {newpoints}){c.RESET}" if newpoints > 0 else "") + "\n"
+	gamestr += ""+" "*(7*3) + str(points) + ("  {}{}(+ {}){}".format(c.BOLD, c.FG_LIGHT_GREEN, newpoints, c.RESET) if newpoints > 0 else "") + "\n"
 	gamestr += "  "+" "*(4) +"Recovery code: " + str(save.exportGame(board)) + "\n"
 	for row in board:
 		gamestr += "  "
@@ -257,9 +257,9 @@ def render_screen(board, height=24, width=80, points=0, newpoints=0, id='', quit
 		gamestr += "\n  You can move with the arrow\n  keys and quit by \n  pressing the q key!\n\n"
 	over, win = is_over(board)
 	if over and not win:
-		gamestr += f"\n  There are no more valid moves!\n\n  {c.REVERSE}Press <Enter> to continue{c.RESET}\n"
+		gamestr += "\n  There are no more valid moves!\n\n  {}Press <Enter> to continue{}\n".format(c.REVERSE, c.RESET)
 	elif win:
-		gamestr += f"\n  {c.FG_RED}{c.BOLD}{c.BLINK}Congratulations!\n  You won!\n  Your score: {points}{c.RESET}"
+		gamestr += f"\n  {}{}{}Congratulations!\n  You won!\n  Your score: {}{}".format(c.FG_RED, c.BOL, c.BLINK, points, c.RESET)
 	return gamestr
 
 
