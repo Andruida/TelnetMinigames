@@ -259,7 +259,7 @@ def render_screen(board, height=24, width=80, points=0, newpoints=0, id='', quit
 	if over and not win:
 		gamestr += "\n  There are no more valid moves!\n\n  {}Press <Enter> to continue{}\n".format(c.REVERSE, c.RESET)
 	elif win:
-		gamestr += f"\n  {}{}{}Congratulations!\n  You won!\n  Your score: {}{}".format(c.FG_RED, c.BOL, c.BLINK, points, c.RESET)
+		gamestr += "\n  {}{}{}Congratulations!\n  You won!\n  Your score: {}{}".format(c.FG_RED, c.BOL, c.BLINK, points, c.RESET)
 	return gamestr
 
 
